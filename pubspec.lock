@@ -19,6 +19,12 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.15.2+7"
+  bit_set:
+    description:
+      name: bit_set
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   browser:
     description:
       name: browser
@@ -43,6 +49,12 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1"
+  dartemis:
+    description:
+      name: dartemis
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.7.3"
   html:
     description:
       name: html
