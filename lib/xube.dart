@@ -1,0 +1,5 @@
+library xube;
+
+class Game {
+  
+}
