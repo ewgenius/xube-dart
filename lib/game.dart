@@ -2,10 +2,11 @@ library xube;
 
 import 'dart:html';
 import 'dart:web_gl' as WebGL;
-import 'package:vector_math/vector_math.dart';
+//import 'package:vector_math/vector_math.dart';
 import 'package:dartemis/dartemis.dart';
 
-class XubeGame {
+abstract class Game {
+  int _width, _height;
   bool _stop = false;
   int _animFrameId;
   double _elapsedTime;
@@ -13,7 +14,11 @@ class XubeGame {
   CanvasElement _canvas;
   WebGL.RenderingContext _gl;
 
-  XubeGame(canvas) {
+  int get width => _width;
+  int get height => _height;
+  WebGL.RenderingContext get gl => _gl;
+
+  Game(canvas) {
     this._canvas = canvas;
     this._gl = this._canvas.getContext("experimental-webgl");
     if (canvas is! CanvasElement || _gl is! WebGL.RenderingContext) {
@@ -27,8 +32,11 @@ class XubeGame {
     this._world.initialize();
   }
 
+  void resize(int width, int height) {
+
+  }
+
   void run() {
-    print(this._gl);
     this._renderFrame();
   }
 
@@ -40,15 +48,20 @@ class XubeGame {
         if (this._elapsedTime == null) {
           this._elapsedTime = time;
         }
-        this._render(time - this._elapsedTime);
+
+        this.preRender();
+        this.render(time - this._elapsedTime);
+        this.postRender();
+
         this._elapsedTime = time;
         this._renderFrame();
       });
     }
   }
 
-  void _render([double time = .0]) {
-    this._gl.clear(WebGL.RenderingContext.COLOR_BUFFER_BIT |
-        WebGL.RenderingContext.DEPTH_BUFFER_BIT);
-  }
+  void preRender() {}
+
+  void render([double time = .0]) {}
+
+  void postRender() {}
 }
