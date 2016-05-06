@@ -10,8 +10,9 @@ environment:
 dependencies:
   browser: '>=0.10.0 <0.11.0'
   dart_to_js_script_rewriter: '^1.0.1'
+  vector_math: any
   dartemis: 0.7.3
   dartemis_toolbox: any
-  
+
 transformers:
 - dart_to_js_script_rewriter
